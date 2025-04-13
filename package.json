@@ -1,0 +1,23 @@
+{
+  "name": "log-rank",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "type:check": "tsc --noEmit",
+    "build": "npm run type:check && tsc",
+    "code": "npm run build && node ./dist/index.js"
+  },
+  "keywords": [
+    "Console",
+    "Console.log",
+    "Console priority"
+  ],
+  "author": "Satyam",
+  "license": "ISC",
+  "description": "A priority-based console logger for Node.js and browser environments. Log messages with custom priorities and control the order they appear — ideal for debugging complex flows, batching logs, or building clean dev tools.",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
