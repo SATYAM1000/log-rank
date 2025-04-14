@@ -19,5 +19,16 @@
   "description": "A priority-based console logger for Node.js and browser environments. Log messages with custom priorities and control the order they appear — ideal for debugging complex flows, batching logs, or building clean dev tools.",
   "devDependencies": {
     "typescript": "^5.8.3"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SATYAM1000/log-rank.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SATYAM1000/log-rank/issues"
+  },
+  "homepage": "https://github.com/SATYAM1000/log-rank#readme"
 }
