@@ -93,14 +93,12 @@ logger.flush();
 
 ### `Console` constructor options
 
-| Option                  | Type    | Required | Default | Description                               |
-| ----------------------- | ------- | -------- | ------- | ----------------------------------------- | -------------------- |
-| `maximumConsoleAllowed` | number  | ✅       | —       | Max messages allowed before stopping logs |
-| `isConsoleDisable`      | boolean | ❌       | false   | Globally disable logging                  |
-| `timeFormat`            | "ISO"   | "LOCALE" | ✅      | —                                         | Format of timestamps |
-| `reversePriority`       | boolean | ❌       | false   | Show low priority messages first          |
-
----
+| Option                  | Type                  | Required | Default | Description                               |
+| ----------------------- | --------------------- | -------- | ------- | ----------------------------------------- |
+| `maximumConsoleAllowed` | number                | ✅       | —       | Max messages allowed before stopping logs |
+| `isConsoleDisable`      | boolean               | ❌       | false   | Globally disable logging                  |
+| `timeFormat`            | `"ISO"` \| `"LOCALE"` | ✅       | —       | Format of timestamps                      |
+| `reversePriority`       | boolean               | ❌       | false   | Show low priority messages first          |
 
 ### Logging Options
 
