@@ -46,6 +46,7 @@ const logger = new Console({
   isConsoleDisable: false,
   timeFormat: "ISO", // or "LOCALE"
   reversePriority: false,
+  showTimestamps: true,
 });
 ```
 
@@ -54,7 +55,7 @@ const logger = new Console({
 #### Log
 
 ```ts
-logger.log("This is a log message", { priority: 1, showTimestamps: true });
+logger.log("This is a log message", { priority: 1, showTimestamps: false });
 ```
 
 #### Warn

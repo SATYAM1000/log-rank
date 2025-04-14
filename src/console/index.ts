@@ -1,6 +1,6 @@
 interface IConsoleOptions {
   priority?: number;
-  showTimestamps?: boolean;
+  showTimestamp?: boolean | undefined;
 }
 
 enum logMessagesType {
@@ -14,8 +14,9 @@ enum logMessagesType {
 interface IConstructor {
   maximumConsoleAllowed: number;
   isConsoleDisable?: boolean;
-  timeFormat?: "ISO" | "LOCALE"; // Optional, remove if not using
+  timeFormat?: "ISO" | "LOCALE";
   reversePriority?: boolean;
+  showTimestamps?: boolean;
 }
 
 interface IMessage {
@@ -31,17 +32,29 @@ export class Console {
   private maximumConsoleAllowed: number;
   private isConsoleDisable: boolean;
   private reversePriority: boolean;
+  private timeFormat: "ISO" | "LOCALE";
+  private showTimestamps: boolean;
 
   constructor({
     isConsoleDisable = false,
     maximumConsoleAllowed,
     reversePriority = false,
+    timeFormat = "ISO",
+    showTimestamps = false,
   }: IConstructor) {
     this.maximumConsoleAllowed = maximumConsoleAllowed;
     this.isConsoleDisable = isConsoleDisable;
     this.reversePriority = reversePriority;
+    this.timeFormat = timeFormat;
+    this.showTimestamps = showTimestamps;
     this.messagesToBeLogged = {};
     this.totalConsoleMessagesCount = 0;
+  }
+
+  private getFormattedTimestamp(): string {
+    return this.timeFormat === "ISO"
+      ? new Date().toISOString()
+      : new Date().toLocaleString();
   }
 
   private print() {
@@ -81,7 +94,7 @@ export class Console {
     type: logMessagesType,
     consoleMessage: unknown,
     emoji: string,
-    { priority = 1, showTimestamps = false }: IConsoleOptions,
+    { priority = 1, showTimestamp }: IConsoleOptions,
   ) {
     if (
       this.isConsoleDisable ||
@@ -89,7 +102,10 @@ export class Console {
     )
       return;
 
-    const timestamp = showTimestamps ? new Date().toISOString() : "";
+    const shouldShowTimestamp =
+      showTimestamp !== undefined ? showTimestamp : this.showTimestamps;
+
+    const timestamp = shouldShowTimestamp ? this.getFormattedTimestamp() : "";
 
     const message: IMessage = {
       type,
@@ -101,6 +117,7 @@ export class Console {
     if (!this.messagesToBeLogged[priority]) {
       this.messagesToBeLogged[priority] = [];
     }
+
     this.messagesToBeLogged[priority].push(message);
     this.totalConsoleMessagesCount++;
 

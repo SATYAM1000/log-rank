@@ -10,6 +10,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "log-rank": "file:../log-rank-1.0.1.tgz"
+    "log-rank": "file:../log-rank-1.0.7.tgz"
   }
 }
